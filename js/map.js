@@ -1,27 +1,22 @@
-// Function to draw your map
 var drawMap = function() {
-
-  // Create map and set view
- 
-
-  // Create a tile layer variable using the appropriate url
-
-
-  // Add the layer to your map
- 
-
-  // Execute your function to get data
- 
+ 	var map = L.map('mymap').setView([35.25, -98.88], 4);
+	var layer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png');
+ 	layer.addTo(map);
+ 	getData();
 }
 
 // Function for getting data
 var getData = function() {
 
   // Execute an AJAX request to get the data in data/response.js
-
+  $.ajax({
+  	url: "../data/response.json",
+  	type: "get",
+  	success: customBuild()
+  });
 
   // When your request is successful, call your customBuild function
-
+ 
 }
 
 // Loop through your data and add the appropriate layers and points
