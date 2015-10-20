@@ -22,6 +22,7 @@ var getData = function() {
       data = response,
       customBuild()
     }
+    dataType: "json";
   });
 }
 
