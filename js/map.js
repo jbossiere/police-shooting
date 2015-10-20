@@ -29,7 +29,12 @@ var customBuild = function() {
   var unknownG = new L.layerGroup([]);
   var male = new L.layerGroup([]);
   var female = new L.layerGroup([]);
-  var unknownHitCount;
+  var unknownHitCount = 0;
+  var unknownKillCount = 0;
+  var maleHitCount = 0;
+  var maleKillCount = 0;
+  var femaleHitCount = 0;
+  var femaleKillCount = 0;
 
   data.forEach(function(d) {
     var lat = d['lat'];
@@ -38,18 +43,29 @@ var customBuild = function() {
     var summary = d["Summary"];
     var link = d["Source Link"];
     var hitKill = d["Hit or Killed?"];
-    $('#td1').html();
 
     if (gender == 'Unknown') {
       if (hitKill == "Hit") {
-        
+        unknownHitCount++;
+      } else {
+        unknownKillCount++;
       }
       var circle = new L.circleMarker([lat, lng], {color: '#66FF66', radius: 5});
       circle.addTo(unknownG);
     } else if (gender == "Male") {
+      if (hitKill == "Hit") {
+        maleHitCount++;
+      } else {
+        maleKillCount++;
+      }        
       var circle = new L.circleMarker([lat, lng], {color: '#0099FF', radius: 5});
       circle.addTo(male);
     } else {
+      if (hitKill == "Hit") {
+        femaleHitCount++;
+      } else {
+        femaleKillCount++;
+      }        
       var circle = new L.circleMarker([lat, lng], {color: '#FF99FF', radius: 5});
       circle.addTo(female);
     }
@@ -65,6 +81,12 @@ var customBuild = function() {
     "Male": male,
     "Female": female
   };
+  $('#td1').html(maleHitCount);
+  $('#td2').html(femaleHitCount);
+  $('#td3').html(unknownHitCount);
+  $('#td4').html(maleKillCount);
+  $('#td5').html(femaleKillCount);
+  $('#td6').html(unknownKillCount);
   L.control.layers(null, overLays).addTo(map);
 }
 
