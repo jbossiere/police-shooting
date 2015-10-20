@@ -22,8 +22,27 @@
   </head>
   <body>
     <h1>Police Shootings</h1>
-    <p>This map shows crowdsourced police shooting data from <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">deadspin.</a> Click to see details for each incident.</p>
+    <p>This map shows crowdsourced police shooting data from <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">deadspin.</a> Circle color indicates <font color="#0099FF">male</font>, <font color="#FF99FF">female</font>, or <font color="##66FF66">unknown</font> gender. Click to see details for each incident.</p>
     <!-- You may want to put your title and additional informaiton here -->
+    <table class="table table-striped" align="center">
+      <tr>
+        <th></th>
+        <th>Male</th>
+        <th>Female</th>
+        <th>Unknown</th>
+      <tr>
+        <th>Hit</th>
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+      </tr>
+      <tr>
+        <th>Killed</th>
+        <td id="td4"></td>
+        <td id="td5"></td>
+       <td id="td6"></td>
+      </tr>
+    </table>  
     <div id="mymap" class="container">
       <!-- This is the div that your map will go in.  You'll need to reference its id -->
       <div id="container">

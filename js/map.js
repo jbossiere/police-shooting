@@ -1,7 +1,5 @@
-var unknownG = new L.layerGroup([]);
-var male = new L.layerGroup([]);
-var female = new L.layerGroup([]);
 var map;
+var data;
 
 // Function to draw your map
 var drawMap = function() {
@@ -17,40 +15,57 @@ var drawMap = function() {
 
 // Function for getting data
 var getData = function() {
-  $.getJSON('data/response.json').then(customBuild);
+  $.ajax({
+    url: 'data/response.json',
+    type: 'get',
+    success: function(response) { //success function by default the first variable is the data that comes back from the url request
+      data = response,
+      customBuild()
+    }
+  });
 }
 
-var customBuild = function(data) {
-  for (i = 0; i < data.length; i++) {
+var customBuild = function() {
+  var unknownG = new L.layerGroup([]);
+  var male = new L.layerGroup([]);
+  var female = new L.layerGroup([]);
+  var unknownHitCount;
 
-    var lat = data[i]["lat"];
-    var lng = data[i]["lng"];
-
-    var name = data[i]["Victim Name"];
-
-    var armedOrNot = data[i]["Armed or Unarmed"];
-
-    var race = data[i]["Race"];
-
-    var state = data[i]["State"];
-
-    var gender = data[i]["Victim's Gender"];
-
-    var summary = data[i]["Summary"];
+  data.forEach(function(d) {
+    var lat = d['lat'];
+    var lng = d['lng'];
+    var gender = d["Victim's Gender"];
+    var summary = d["Summary"];
+    var link = d["Source Link"];
+    var hitKill = d["Hit or Killed?"];
+    $('#td1').html();
 
     if (gender == 'Unknown') {
-      var circle = new L.circleMarker([lat, lng]);
-      unknownG[i] = data[i];
-      circle.addTo(unknownG).addTo(map);
+      if (hitKill == "Hit") {
+        
+      }
+      var circle = new L.circleMarker([lat, lng], {color: '#66FF66', radius: 5});
+      circle.addTo(unknownG);
     } else if (gender == "Male") {
-      var circle = new L.circleMarker([lat, lng]);
-      male[i] = data[i];
-      circle.addTo(male).addTo(map);
+      var circle = new L.circleMarker([lat, lng], {color: '#0099FF', radius: 5});
+      circle.addTo(male);
     } else {
-      var circle = new L.circleMarker([lat, lng]);
-      female[i] = data[i]
-      circle.addTo(female).addTo(map);
+      var circle = new L.circleMarker([lat, lng], {color: '#FF99FF', radius: 5});
+      circle.addTo(female);
     }
-    circle.bindPopup(summary);
-  }
+
+    unknownG.addTo(map);
+    male.addTo(map);
+    female.addTo(map);
+    circle.bindPopup(summary + "(link)".link(link));
+
+  });
+  var overLays = {
+    "Unkown": unknownG,
+    "Male": male,
+    "Female": female
+  };
+  L.control.layers(null, overLays).addTo(map);
 }
+
+
