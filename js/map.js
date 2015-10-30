@@ -18,11 +18,11 @@ var getData = function() {
   $.ajax({
     url: 'data/response.json',
     type: 'get',
+    dataType: json,
     success: function(response) { //success function by default the first variable is the data that comes back from the url request
       data = response,
       customBuild()
     },
-    dataType: json
   });
 }
 
