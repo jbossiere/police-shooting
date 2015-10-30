@@ -19,6 +19,7 @@ p {
 }
 
 table {
+	width: 100%;
 	color: #868686;	
 	background-color: black;
 	margin-bottom: 10px;
