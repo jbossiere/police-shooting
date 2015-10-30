@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Police Shootings</title>
+    <link rel="icon" href="img/police-icon.png">
+
 
     <!-- jQuery, Bootstrap -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
@@ -19,32 +21,35 @@
     <!-- Custom files -->
     <script type="text/javascript" src="js/map.js"></script>
     <link rel="stylesheet" href="css/main.css"/>
+
+
+
   </head>
   <body>
-    <h1>Police Shootings</h1>
-    <p>This map shows crowdsourced police shooting data from <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">deadspin.</a> Circle color indicates <font color="#0099FF">male</font>, <font color="#FF99FF">female</font>, or <font color="##66FF66">unknown</font> gender. Click to see details for each incident.</p>
-    <!-- You may want to put your title and additional informaiton here -->
-    <table class="table" align="center">
-      <tr>
-        <th></th>
-        <th>Male</th>
-        <th>Female</th>
-        <th>Unknown</th>
-      <tr>
-        <th id="verticalHeader">Hit</th>
-        <td id="td1"></td>
-        <td id="td2"></td>
-        <td id="td3"></td>
-      </tr>
-      <tr>
-        <th id="verticalHeader">Killed</th>
-        <td id="td4"></td>
-        <td id="td5"></td>
-       <td id="td6"></td>
-      </tr>
-    </table>  
+    <div class="topInfo">
+      <h1>Police Shootings</h1>
+      <p>This map shows crowdsourced police shooting data from <a href="http://regressing.deadspin.com/deadspin-police-shooting-database-update-were-still-go-1627414202">deadspin.</a> Circle color indicates <font color="#0099FF">male</font>, <font color="#FF99FF">female</font>, or <font color="##66FF66">unknown</font> gender. Click to see details for each incident.</p>
+      <table class="table" align="center">
+        <tr>
+          <th></th>
+          <th>Male</th>
+          <th>Female</th>
+          <th>Unknown</th>
+        <tr>
+          <th id="verticalHeader">Hit</th>
+          <td id="td1"></td>
+          <td id="td2"></td>
+          <td id="td3"></td>
+        </tr>
+        <tr>
+          <th id="verticalHeader">Killed</th>
+          <td id="td4"></td>
+          <td id="td5"></td>
+         <td id="td6"></td>
+        </tr>
+      </table>  
+    </div>
     <div id="mymap" class="container">
-      <!-- This is the div that your map will go in.  You'll need to reference its id -->
       <div id="container">
       </div>
     </div>

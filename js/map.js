@@ -3,7 +3,7 @@ var data;
 
 // Function to draw your map
 var drawMap = function() {
-  map = L.map('mymap').setView([35.25, -98.88], 4);
+  map = L.map('mymap').setView([37.25, -97.88], 4);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
      attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
      maxZoom: 18,
